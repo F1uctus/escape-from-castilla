@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity {
     public static final HashMap<String, ResourceBundle> bundles = new HashMap<>();
-    public static final int mapSize = 10;
+    public static final int mapSize = 11;
 
     BaseGameState gameState;
 
