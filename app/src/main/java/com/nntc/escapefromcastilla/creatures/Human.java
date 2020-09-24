@@ -5,7 +5,6 @@ import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
 import com.crown.maps.Map;
 import com.crown.maps.MapIcon;
-import com.crown.maps.MapWeight;
 import com.crown.maps.Point3D;
 import com.crown.time.Action;
 import com.nntc.escapefromcastilla.ui.MapIcons;
@@ -20,14 +19,12 @@ public class Human extends Organism {
         String name,
         Map map,
         MapIcon<?> mapIcon,
-        MapWeight mapWeight,
         Point3D position
     ) {
         super(
             name,
             map,
             mapIcon,
-            mapWeight,
             position,
             100,
             100,

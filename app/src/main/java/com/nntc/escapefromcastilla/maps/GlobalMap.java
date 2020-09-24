@@ -1,5 +1,6 @@
 package com.nntc.escapefromcastilla.maps;
 
+import com.crown.common.utils.Random;
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
 import com.crown.maps.Map;
@@ -17,7 +18,7 @@ public class GlobalMap extends Map {
             }
         }
         for (int i = 0; i < xSize / 2; i++) {
-            add(new Wall(this));
+            add(new Wall(this, Random.getFreePoint(this).withZ(MapLevel.ground + 1)));
         }
     }
 
