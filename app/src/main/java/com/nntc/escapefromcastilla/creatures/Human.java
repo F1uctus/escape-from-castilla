@@ -36,6 +36,7 @@ public class Human extends Organism {
         );
         xp = 100;
         fov = 5;
+        setWalkable(false);
     }
 
     public ITemplate getStats() {

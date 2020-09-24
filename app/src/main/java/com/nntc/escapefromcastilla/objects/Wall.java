@@ -9,6 +9,7 @@ import com.nntc.escapefromcastilla.ui.MapIcons;
 public class Wall extends MapObject {
     public Wall(Map map) {
         super("Wall", map, MapIcons.collection().get("wall"), MapWeight.OBSTACLE);
+        setWalkable(false);
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.nntc.escapefromcastilla.ui.MapIcons;
 public class GreenCoin extends MapObject implements IDroppable {
     public GreenCoin(Map map, Point3D pt) {
         super("Green coin", map, MapIcons.collection().get("coin_green"), MapWeight.OBSTACLE, pt);
+        setWalkable(false);
     }
 
     @Override

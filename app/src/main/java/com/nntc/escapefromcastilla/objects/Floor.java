@@ -10,6 +10,7 @@ import com.nntc.escapefromcastilla.ui.MapIcons;
 public class Floor extends MapObject {
     public Floor(Map map, Point3D pt) {
         super("Floor", map, MapIcons.collection().get("floor"), MapWeight.OBSTACLE, pt);
+        setWalkable(false);
     }
 
     @Override
