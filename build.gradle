@@ -16,7 +16,13 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.pkg.github.com/f1uctus/crown'
+            credentials {
+                username = "F1uctus"
+                password = "9f9d0ee066f0cfb3427a539c01c02d830b632ced"
+            }
+        }
     }
 }
 
