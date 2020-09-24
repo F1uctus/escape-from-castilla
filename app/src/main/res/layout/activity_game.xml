@@ -26,7 +26,8 @@
         <Button
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@drawable/arrow_u" />
+            android:background="@drawable/arrow_u"
+            android:onClick="onUpClick" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
             <Button
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/arrow_l" />
+                android:background="@drawable/arrow_l"
+                android:onClick="onLeftClick" />
 
             <Space
                 android:layout_width="64dp"
@@ -45,12 +47,14 @@
             <Button
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/arrow_r" />
+                android:background="@drawable/arrow_r"
+                android:onClick="onRightClick" />
         </LinearLayout>
 
         <Button
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@drawable/arrow_d" />
+            android:background="@drawable/arrow_d"
+            android:onClick="onDownClick" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
