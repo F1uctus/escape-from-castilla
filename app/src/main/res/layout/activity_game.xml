@@ -36,38 +36,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/arrow_u"
-            android:onClick="onUpClick" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <io.github.controlwear.virtual.joystick.android.JoystickView
+            android:id="@+id/joystick"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/arrow_l"
-                android:onClick="onLeftClick" />
-
-            <Space
-                android:layout_width="64dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/arrow_r"
-                android:onClick="onRightClick" />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/arrow_d"
-            android:onClick="onDownClick" />
+            android:layout_marginTop="10dp"
+            app:JV_backgroundColor="#500288D1"
+            app:JV_borderColor="#0288D1"
+            app:JV_borderWidth="2dp"
+            app:JV_buttonColor="#0097A7"
+            app:JV_buttonSizeRatio="20%"
+            app:JV_fixedCenter="false" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
