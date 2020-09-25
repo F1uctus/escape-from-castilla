@@ -3,10 +3,13 @@ package com.nntc.escapefromcastilla.creatures;
 import com.crown.creatures.Organism;
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
+import com.crown.maps.Direction;
 import com.crown.maps.Map;
 import com.crown.maps.MapIcon;
+import com.crown.maps.MapObject;
 import com.crown.maps.Point3D;
 import com.crown.time.Action;
+import com.crown.time.Timeline;
 import com.nntc.escapefromcastilla.ui.MapIcons;
 
 public class Human extends Organism {
@@ -86,6 +89,21 @@ public class Human extends Organism {
     }
 
     // endregion
+
+    @Override
+    public ITemplate moveBy(final int deltaX, final int deltaY, final int deltaZ) {
+        return Timeline.main.perform(new Action<Organism>(this) {
+            @Override
+            public ITemplate perform() {
+                return getTarget().move(deltaX, deltaY, deltaZ);
+            }
+
+            @Override
+            public ITemplate rollback() {
+                return getTarget().move(-deltaX, -deltaY, -deltaZ);
+            }
+        });
+    }
 
     @Override
     public MapIcon<?> getMapIcon() {
