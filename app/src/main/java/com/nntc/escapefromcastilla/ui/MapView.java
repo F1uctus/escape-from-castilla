@@ -52,7 +52,7 @@ class MapView extends View {
             centerPoint = player.getPt0().withZ(map.zSize - 1);
         }
         MapIcon<?>[][][] objects = map.get3DArea(centerPoint, radius);
-        int tileSide = getWidth() / (radius * 2 + 1);
+        int tileSide = getHeight() / (radius * 2 + 1);
         for (MapIcon<?>[][] layer : objects) {
             for (int areaY = 0; areaY < layer.length; areaY++) {
                 for (int areaX = 0; areaX < layer[areaY].length; areaX++) {
