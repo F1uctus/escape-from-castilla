@@ -8,13 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.crown.i18n.I18n;
-import com.crown.time.Timeline;
-import com.crown.time.VirtualClock;
-import com.nntc.escapefromcastilla.Actor;
-import com.nntc.escapefromcastilla.GameState;
 import com.nntc.escapefromcastilla.R;
-import com.nntc.escapefromcastilla.maps.GlobalMap;
-import com.nntc.escapefromcastilla.maps.MapLevel;
 
 import java.util.HashMap;
 import java.util.ResourceBundle;
