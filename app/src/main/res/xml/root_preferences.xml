@@ -1,20 +1,23 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/gameplay">
+    <PreferenceCategory
+        app:title="@string/gameplay">
 
         <EditTextPreference
+            android:inputType="number"
             app:defaultValue="20"
             app:dialogTitle="@string/map_size"
             app:key="mapSize"
-            android:inputType="number"
             app:summary="@string/description_mapSize"
             app:title="@string/map_size"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/input">
+    <PreferenceCategory
+        app:title="@string/input">
+
         <DropDownPreference
             app:entries="@array/moveControls"
             app:entryValues="@array/moveControls"
