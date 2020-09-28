@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity {
     public static final HashMap<String, ResourceBundle> bundles = new HashMap<>();
-    public static final int mapSize = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +36,6 @@ public class MainActivity extends AppCompatActivity {
         bundles.put("en", new Resources.English());
         I18n.init(bundles);
         Log.d("I18n", "OK");
-
-        Log.d("Game state", "Initializing...");
-        GameState gameState = new GameState(
-            this,
-            new GlobalMap("Global map", mapSize, mapSize, MapLevel.height)
-        );
-        Log.d("Game state", "OK");
-
-        Log.d("Main timeline", "Initializing...");
-        Timeline.init(
-            new VirtualClock(1000, new Runnable() {
-                @Override
-                public void run() {
-                }
-            }).startAtRnd(),
-            gameState
-        );
-        Log.d("Main timeline", "OK");
-
-        gameState.addPlayer("Runner");
-        Actor.pick("Runner");
     }
 
     public void onPlayClick(View view) {

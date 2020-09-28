@@ -9,7 +9,6 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.nntc.escapefromcastilla.R;
 
 public class SettingsActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

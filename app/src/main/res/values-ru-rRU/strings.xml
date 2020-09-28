@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Escape from Castilla</string>
+    <string name="settings">Настройки</string>
+    <string name="play">Играть</string>
+    <string name="move_controller">Контроллер движения</string>
+    <string name="map_size">Размер карты</string>
+    <string name="input">Ввод</string>
+    <string name="description_mapSize">Определяет размер сгенерированной карты</string>
+</resources>
