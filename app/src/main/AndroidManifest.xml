@@ -16,7 +16,8 @@
         <activity
             android:name=".ui.GameActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

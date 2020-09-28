@@ -5,9 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.preference.PreferenceManager;
 
+import com.crown.i18n.I18n;
+import com.crown.i18n.ITemplate;
 import com.crown.time.Timeline;
 import com.crown.time.VirtualClock;
 import com.nntc.escapefromcastilla.Actor;
@@ -17,6 +20,8 @@ import com.nntc.escapefromcastilla.maps.GlobalMap;
 import com.nntc.escapefromcastilla.maps.MapLevel;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
+
+import static com.nntc.escapefromcastilla.ui.MainActivity.locale;
 
 public class GameActivity extends Activity {
     @Override
@@ -71,6 +76,11 @@ public class GameActivity extends Activity {
         Actor.pick("Runner");
     }
 
+    public void setStatusMessage(ITemplate message) {
+        if (message == I18n.okMessage) message = I18n.empty;
+        ((TextView) findViewById(R.id.status)).setText(message.getLocalized(locale));
+    }
+
     public int getMapSize() {
         SharedPreferences prefs =
             PreferenceManager.getDefaultSharedPreferences(this);
@@ -79,18 +89,22 @@ public class GameActivity extends Activity {
     }
 
     public void onUpClick(View view) {
-        Actor.get().moveBy(0, -1);
+        ITemplate result = Actor.get().moveBy(0, -1);
+        setStatusMessage(result);
     }
 
     public void onLeftClick(View view) {
-        Actor.get().moveBy(-1, 0);
+        ITemplate result = Actor.get().moveBy(-1, 0);
+        setStatusMessage(result);
     }
 
     public void onRightClick(View view) {
-        Actor.get().moveBy(1, 0);
+        ITemplate result = Actor.get().moveBy(1, 0);
+        setStatusMessage(result);
     }
 
     public void onDownClick(View view) {
-        Actor.get().moveBy(0, 1);
+        ITemplate result = Actor.get().moveBy(0, 1);
+        setStatusMessage(result);
     }
 }
