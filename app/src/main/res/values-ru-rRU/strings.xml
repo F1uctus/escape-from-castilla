@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Escape from Castilla</string>
+    <string name="title_activity_settings" translatable="false">Настройки</string>
+
     <string name="settings">Настройки</string>
     <string name="play">Играть</string>
     <string name="move_controller">Контроллер движения</string>
