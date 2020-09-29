@@ -5,14 +5,17 @@ import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
 import com.crown.maps.Map;
 import com.crown.maps.MapIcon;
+import com.crown.maps.MapObject;
 import com.crown.maps.Point3D;
 import com.crown.time.Action;
 import com.crown.time.Timeline;
+import com.nntc.escapefromcastilla.objects.GoldCoin;
 import com.nntc.escapefromcastilla.ui.MapIcons;
 
 public class Human extends Organism {
     public String lang = "en";
 
+    protected int score = 0;
     protected final int maxFov = 20;
     protected int fov;
 
@@ -49,6 +52,10 @@ public class Human extends Organism {
             + I18n.fmtOf("stats.skillPoints") + ": " + getSkillPoints() + "\n"
             + getPt0()
         );
+    }
+
+    public int getScore() {
+        return score;
     }
 
     // region FOV
@@ -93,6 +100,13 @@ public class Human extends Organism {
         return Timeline.main.perform(new Action<Organism>(this) {
             @Override
             public ITemplate perform() {
+                getMapIcon().stepAnimation();
+                Point3D targetPoint = getPt0().plus(getMapIcon().getDirection().point);
+                MapObject targetObj = getMap().get(targetPoint);
+                if (targetObj instanceof GoldCoin) {
+                    getMap().remove(targetObj);
+                    score++;
+                }
                 return getTarget().move(deltaX, deltaY, deltaZ);
             }
 

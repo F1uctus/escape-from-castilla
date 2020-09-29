@@ -79,15 +79,19 @@ public class GameActivity extends Activity {
     }
 
     public void setStatusMessage(ITemplate message) {
-        if (message == I18n.okMessage) message = I18n.empty;
+        if (message == I18n.okMessage) {
+            message = I18n.empty;
+        }
+        if (Actor.get() != null) {
+            ((TextView) findViewById(R.id.coins_counter)).setText(String.valueOf(Actor.get().getScore()));
+        }
         ((TextView) findViewById(R.id.status)).setText(message.getLocalized(locale));
     }
 
     public int getMapSize() {
         SharedPreferences prefs =
             PreferenceManager.getDefaultSharedPreferences(this);
-        String value = prefs.getString("mapSize", null);
-        return value == null ? -1 : Integer.parseInt(value);
+        return prefs.getInt("mapSize", 21);
     }
 
     public void onUpClick(View view) {
