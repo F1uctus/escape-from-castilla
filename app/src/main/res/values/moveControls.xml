@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="moveControls">
-        <item>Джойстик</item>
-        <item>Стрелки</item>
+        <item>@string/joystick</item>
+        <item>@string/arrows</item>
     </string-array>
 </resources>

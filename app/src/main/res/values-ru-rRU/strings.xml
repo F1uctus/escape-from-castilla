@@ -10,4 +10,6 @@
     <string name="input">Ввод</string>
     <string name="description_mapSize">Определяет размер сгенерированной карты</string>
     <string name="gameplay">Геймплей</string>
+    <string name="joystick">Джойстик</string>
+    <string name="arrows">Стрелки</string>
 </resources>
