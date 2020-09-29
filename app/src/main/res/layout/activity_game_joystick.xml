@@ -23,13 +23,12 @@
 
         <TextView
             android:id="@+id/coins_counter"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp" />
+            style="@style/CoinsCounter" />
 
         <TextView
             android:id="@+id/status"
-            style="@style/GameStatusBar" />
+            style="@style/GameStatusBar"
+            android:fontFamily="@font/joystix" />
     </LinearLayout>
 
     <com.nntc.escapefromcastilla.ui.MapView
