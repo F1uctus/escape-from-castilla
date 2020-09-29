@@ -45,7 +45,7 @@ public class GlobalMap extends Map {
             public void run() {
                 MapIcons.collection().get("coin").stepAnimation();
             }
-        }, 100, 250);
+        }, 100, 150);
     }
 
     public Point3D getTrueFreePoint(int zLevel) {
