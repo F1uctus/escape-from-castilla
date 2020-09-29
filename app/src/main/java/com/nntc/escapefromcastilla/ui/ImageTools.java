@@ -1,7 +1,16 @@
 package com.nntc.escapefromcastilla.ui;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Shader;
+
+import com.crown.common.utils.Random;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -57,6 +66,49 @@ public class ImageTools {
             width,
             height,
             false
+        );
+    }
+
+    public static Bitmap[] splitHorizontal(Bitmap image, int xCount) {
+        Bitmap[] bitmaps = new Bitmap[xCount];
+        int width = image.getWidth() / xCount;
+        int height = image.getHeight();
+        for (int x = 0; x < xCount; ++x) {
+            bitmaps[x] = Bitmap.createBitmap(image, x * width, 0, width, height);
+        }
+        return bitmaps;
+    }
+
+    public static Bitmap addBitmapGradient(Bitmap image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        Bitmap updatedBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(updatedBitmap);
+
+        canvas.drawBitmap(image, 0, 0, null);
+
+        Paint paint = new Paint();
+        LinearGradient shader = new LinearGradient(
+            0,
+            0,
+            0,
+            height,
+            getRandomColor(),
+            getRandomColor(),
+            Shader.TileMode.CLAMP
+        );
+        paint.setShader(shader);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawRect(0, 0, width, height, paint);
+
+        return updatedBitmap;
+    }
+
+    public static int getRandomColor() {
+        return Color.rgb(
+            Random.getInt(50, 200),
+            Random.getInt(50, 200),
+            Random.getInt(50, 200)
         );
     }
 }
