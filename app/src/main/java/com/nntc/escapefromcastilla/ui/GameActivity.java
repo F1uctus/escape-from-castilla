@@ -36,19 +36,21 @@ public class GameActivity extends Activity {
 
             ((JoystickView) findViewById(R.id.joystick)).setOnMoveListener((angle, strength) -> {
                 if (strength > 40) {
+                    ITemplate result;
                     if (angle <= 225 && angle >= 135) {
                         // left
-                        Actor.get().moveBy(-1, 0);
+                        result = Actor.get().moveBy(-1, 0);
                     } else if (angle < 135 && angle >= 45) {
                         // up
-                        Actor.get().moveBy(0, -1);
+                        result = Actor.get().moveBy(0, -1);
                     } else if (angle <= 315 && angle > 225) {
                         // down
-                        Actor.get().moveBy(0, 1);
+                        result = Actor.get().moveBy(0, 1);
                     } else {
                         // right
-                        Actor.get().moveBy(1, 0);
+                        result = Actor.get().moveBy(1, 0);
                     }
+                    setStatusMessage(result);
                 }
             }, 150);
         } else if (moveController.equals(controllers[1])) {
