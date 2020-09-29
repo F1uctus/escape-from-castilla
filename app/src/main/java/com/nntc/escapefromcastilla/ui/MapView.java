@@ -33,7 +33,7 @@ class MapView extends View {
             public void run() {
                 invalidate();
             }
-        }, 100, 15);
+        }, 100, 17);
     }
 
     protected void onDraw(Canvas canvas) {
