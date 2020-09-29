@@ -1,22 +1,21 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        app:title="@string/gameplay">
+    <PreferenceCategory app:title="@string/gameplay">
 
-        <EditTextPreference
-            android:inputType="number"
-            app:defaultValue="20"
-            app:dialogTitle="@string/map_size"
+        <SeekBarPreference
+            android:max="501"
+            android:min="9"
+            app:defaultValue="51"
             app:key="mapSize"
+            app:persistent="true"
+            app:seekBarIncrement="2"
             app:summary="@string/description_mapSize"
-            app:title="@string/map_size"
-            app:useSimpleSummaryProvider="true" />
+            app:title="@string/map_size" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:title="@string/input">
+    <PreferenceCategory app:title="@string/input">
 
         <DropDownPreference
             app:entries="@array/moveControls"

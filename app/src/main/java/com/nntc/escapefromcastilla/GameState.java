@@ -3,12 +3,11 @@ package com.nntc.escapefromcastilla;
 import android.content.Context;
 
 import com.crown.BaseGameState;
-import com.crown.common.utils.Random;
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
-import com.crown.maps.Map;
 import com.crown.maps.Point3D;
 import com.nntc.escapefromcastilla.creatures.Wanderer;
+import com.nntc.escapefromcastilla.maps.GlobalMap;
 import com.nntc.escapefromcastilla.maps.MapLevel;
 
 /**
@@ -17,7 +16,7 @@ import com.nntc.escapefromcastilla.maps.MapLevel;
 public class GameState extends BaseGameState {
     public final Context context;
 
-    public GameState(Context context, Map globalMap) {
+    public GameState(Context context, GlobalMap globalMap) {
         super(globalMap);
         this.context = context;
     }
@@ -27,7 +26,7 @@ public class GameState extends BaseGameState {
             return I18n.of("player.nameReserved");
         }
 
-        Point3D pt = Random.getFreePoint(getGlobalMap()).withZ(MapLevel.ground + 1);
+        Point3D pt = ((GlobalMap) getGlobalMap()).getTrueFreePoint(MapLevel.ground + 1);
         players.add(new Wanderer(
             name,
             this,
@@ -35,4 +34,6 @@ public class GameState extends BaseGameState {
         ));
         return I18n.okMessage;
     }
+
+
 }

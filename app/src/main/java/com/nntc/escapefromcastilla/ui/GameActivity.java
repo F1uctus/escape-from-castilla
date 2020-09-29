@@ -36,19 +36,21 @@ public class GameActivity extends Activity {
 
             ((JoystickView) findViewById(R.id.joystick)).setOnMoveListener((angle, strength) -> {
                 if (strength > 40) {
+                    ITemplate result;
                     if (angle <= 225 && angle >= 135) {
                         // left
-                        Actor.get().moveBy(-1, 0);
+                        result = Actor.get().moveBy(-1, 0);
                     } else if (angle < 135 && angle >= 45) {
                         // up
-                        Actor.get().moveBy(0, -1);
+                        result = Actor.get().moveBy(0, -1);
                     } else if (angle <= 315 && angle > 225) {
                         // down
-                        Actor.get().moveBy(0, 1);
+                        result = Actor.get().moveBy(0, 1);
                     } else {
                         // right
-                        Actor.get().moveBy(1, 0);
+                        result = Actor.get().moveBy(1, 0);
                     }
+                    setStatusMessage(result);
                 }
             }, 150);
         } else if (moveController.equals(controllers[1])) {
@@ -77,15 +79,19 @@ public class GameActivity extends Activity {
     }
 
     public void setStatusMessage(ITemplate message) {
-        if (message == I18n.okMessage) message = I18n.empty;
+        if (message == I18n.okMessage) {
+            message = I18n.empty;
+        }
+        if (Actor.get() != null) {
+            ((TextView) findViewById(R.id.coins_counter)).setText(String.valueOf(Actor.get().getScore()));
+        }
         ((TextView) findViewById(R.id.status)).setText(message.getLocalized(locale));
     }
 
     public int getMapSize() {
         SharedPreferences prefs =
             PreferenceManager.getDefaultSharedPreferences(this);
-        String value = prefs.getString("mapSize", null);
-        return value == null ? -1 : Integer.parseInt(value);
+        return prefs.getInt("mapSize", 21);
     }
 
     public void onUpClick(View view) {

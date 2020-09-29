@@ -11,7 +11,12 @@ import com.nntc.escapefromcastilla.ui.MapIcons;
 
 public class GoldCoin extends MapObject implements IDroppable {
     public GoldCoin(Map map, Point3D pt) {
-        super("Gold coin", map, MapIcons.collection().get("coin_gold"), pt);
+        super(
+            "Gold coin",
+            map,
+            MapIcons.collection().get("coin"),
+            pt
+        );
         setWalkable(false);
     }
 
@@ -22,6 +27,6 @@ public class GoldCoin extends MapObject implements IDroppable {
 
     @Override
     public InventoryItem[] drop() {
-        return new InventoryItem[]{new Score(10)};
+        return new InventoryItem[] { new Score(10) };
     }
 }
