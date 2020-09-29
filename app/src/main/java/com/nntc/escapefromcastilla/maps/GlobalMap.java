@@ -26,18 +26,18 @@ public class GlobalMap extends Map {
             for (int x = 0; x < ySize; x++) {
                 add(new Floor(this, new Point3D(x, y, MapLevel.ground)));
                 if (gen[x][y] == Cell.wall) {
-                    add(new Wall(this, new Point3D(
+                    new Wall(this, new Point3D(
                         x,
                         y,
                         MapLevel.ground + 1
-                    )));
+                    ));
                     wallsCount++;
                 }
             }
         }
         int coinsCount = (xSize * ySize - wallsCount) / 20;
         for (int i = 0; i < coinsCount; i++) {
-            add(new GoldCoin(this, getTrueFreePoint(MapLevel.ground + 1)));
+            new GoldCoin(this, getTrueFreePoint(MapLevel.ground + 1));
         }
         coinAnimTimer = new Timer();
         coinAnimTimer.scheduleAtFixedRate(new TimerTask() {
