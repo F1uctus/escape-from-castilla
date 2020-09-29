@@ -1,8 +1,10 @@
 package com.nntc.escapefromcastilla.creatures;
 
+import com.crown.common.interfaces.IDroppable;
 import com.crown.creatures.Organism;
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
+import com.crown.items.InventoryItem;
 import com.crown.maps.Map;
 import com.crown.maps.MapIcon;
 import com.crown.maps.MapObject;
@@ -15,7 +17,6 @@ import com.nntc.escapefromcastilla.ui.MapIcons;
 public class Human extends Organism {
     public String lang = "en";
 
-    protected int score = 0;
     protected final int maxFov = 20;
     protected int fov;
 
@@ -52,10 +53,6 @@ public class Human extends Organism {
             + I18n.fmtOf("stats.skillPoints") + ": " + getSkillPoints() + "\n"
             + getPt0()
         );
-    }
-
-    public int getScore() {
-        return score;
     }
 
     // region FOV
@@ -103,9 +100,12 @@ public class Human extends Organism {
                 getMapIcon().stepAnimation();
                 Point3D targetPoint = getPt0().plus(getMapIcon().getDirection().point);
                 MapObject targetObj = getMap().get(targetPoint);
-                if (targetObj instanceof GoldCoin) {
+                if (targetObj instanceof IDroppable) {
                     getMap().remove(targetObj);
-                    score++;
+                    InventoryItem[] items = ((IDroppable) targetObj).drop();
+                    for (InventoryItem item : items) {
+                        getInventory().add(item);
+                    }
                 }
                 return getTarget().move(deltaX, deltaY, deltaZ);
             }

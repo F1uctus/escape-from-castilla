@@ -11,13 +11,16 @@ import androidx.preference.PreferenceManager;
 
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
+import com.crown.items.InventoryItem;
 import com.crown.time.Timeline;
 import com.crown.time.VirtualClock;
 import com.nntc.escapefromcastilla.Actor;
 import com.nntc.escapefromcastilla.GameState;
 import com.nntc.escapefromcastilla.R;
+import com.nntc.escapefromcastilla.creatures.Human;
 import com.nntc.escapefromcastilla.maps.GlobalMap;
 import com.nntc.escapefromcastilla.maps.MapLevel;
+import com.nntc.escapefromcastilla.objects.items.Score;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -83,7 +86,15 @@ public class GameActivity extends Activity {
             message = I18n.empty;
         }
         if (Actor.get() != null) {
-            ((TextView) findViewById(R.id.coins_counter)).setText(String.valueOf(Actor.get().getScore()));
+            Human player = Actor.get();
+            int count = 0;
+            for (InventoryItem item : player.getInventory()) {
+                if (item instanceof Score) {
+                    count++;
+                }
+            }
+
+            ((TextView) findViewById(R.id.coins_counter)).setText(String.valueOf(count));
         }
         ((TextView) findViewById(R.id.status)).setText(message.getLocalized(locale));
     }

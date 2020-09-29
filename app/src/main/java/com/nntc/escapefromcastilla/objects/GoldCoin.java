@@ -27,6 +27,6 @@ public class GoldCoin extends MapObject implements IDroppable {
 
     @Override
     public InventoryItem[] drop() {
-        return new InventoryItem[] { new Score(10) };
+        return new InventoryItem[] { new Score() };
     }
 }
