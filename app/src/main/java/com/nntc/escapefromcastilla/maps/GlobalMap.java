@@ -1,5 +1,6 @@
 package com.nntc.escapefromcastilla.maps;
 
+import com.crown.common.utils.Random;
 import com.crown.i18n.I18n;
 import com.crown.i18n.ITemplate;
 import com.crown.maps.Map;
@@ -69,5 +70,12 @@ public class GlobalMap extends Map {
     @Override
     public ITemplate getDescription() {
         return I18n.empty;
+    }
+
+    @Override
+    protected void finalize() {
+        coinAnimTimer.cancel();
+        coinAnimTimer.purge();
+        coinAnimTimer = null;
     }
 }
